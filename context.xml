@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<Resource name="jdbc/engomo" 
+		auth="Container"
+		type="javax.sql.DataSource" 
+		username="engomo" 
+		password="password"
+		driverClassName="com.mysql.jdbc.Driver"
+		description="engomo"
+		url="jdbc:mysql://engomo-database:3306/engomo"
+		maxActive="15" 
+		maxIdle="3"/>
+</Context>
