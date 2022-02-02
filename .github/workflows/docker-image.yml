@@ -1,0 +1,31 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+    - name: Download engomoServer
+      run: wget https://cloud.freaxnx01.ch/s/F4HXs8LD83WsWMF/download/engomo.war
+
+    - name: Build the Docker image
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CONTAINER_NAME: build-ci
+        ENGOMO_SERVER_VERSION: V3.302.000.001
+      run: |
+        echo $GITHUB_TOKEN | docker login -u publisher --password-stdin ghcr.io
+        docker build --tag ghcr.io/e3k-dev/build-ci/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION} .
+        docker push ghcr.io/e3k-dev/build-ci/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION}
