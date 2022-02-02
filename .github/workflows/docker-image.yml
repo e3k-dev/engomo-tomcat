@@ -21,7 +21,7 @@ jobs:
     - name: Build the Docker image
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CONTAINER_NAME: build-ci
+        CONTAINER_NAME: engomo-tomcat
         ENGOMO_SERVER_VERSION: V3.302.000.001
       run: |
         echo $GITHUB_TOKEN | docker login -u publisher --password-stdin ghcr.io
