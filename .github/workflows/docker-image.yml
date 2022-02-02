@@ -25,5 +25,5 @@ jobs:
         ENGOMO_SERVER_VERSION: V3.302.000.001
       run: |
         echo $GITHUB_TOKEN | docker login -u publisher --password-stdin ghcr.io
-        docker build --tag ghcr.io/e3k-dev/build-ci/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION} .
-        docker push ghcr.io/e3k-dev/build-ci/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION}
+        docker build --tag ghcr.io/e3k-dev/engomo-tomcat/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION} .
+        docker push ghcr.io/e3k-dev/engomo-tomcat/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION}
