@@ -22,13 +22,13 @@ jobs:
 # https://cloud.freaxnx01.ch/s/F4HXs8LD83WsWMF/download/engomo.war
 
     - name: Download engomoServer
-      run: wget https://cloud.freaxnx01.ch/s/F4HXs8LD83WsWMF/download/engomo.war
+      run: wget https://cloud.freaxnx01.ch/s/324b4aLrSMyxGH9/download/engomo.war
 
     - name: Build the Docker image
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CONTAINER_NAME: engomo-tomcat
-        ENGOMO_SERVER_VERSION: V3.270.1
+        ENGOMO_SERVER_VERSION: V3.302.000.001
       run: |
         echo $GITHUB_TOKEN | docker login -u publisher --password-stdin ghcr.io
         docker build --tag ghcr.io/e3k-dev/engomo-tomcat/${CONTAINER_NAME}:${ENGOMO_SERVER_VERSION} .
