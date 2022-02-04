@@ -29,12 +29,13 @@ jobs:
 
     - name: Build the Docker image
       env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        #ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CONTAINER_NAME: engomo-tomcat
+        REPO_NAME: engomo-tomcat
         #ENGOMO_SERVER_VERSION: V3.302.000.001
       run: |
-        echo "::set-env name=REPO_NAME::${{ github.event.repository.name }}"
+        #echo "::set-env name=REPO_NAME::${{ github.event.repository.name }}"
         echo "Repo name: $REPO_NAME"
         ENGOMO_SERVER_VERSION=$(cat ENGOMO_VERSION)
         echo "Engomo Version: $ENGOMO_SERVER_VERSION"
