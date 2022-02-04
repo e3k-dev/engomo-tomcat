@@ -22,7 +22,10 @@ jobs:
 # https://cloud.freaxnx01.ch/s/F4HXs8LD83WsWMF/download/engomo.war
 
     - name: Download engomoServer
-      run: wget https://cloud.freaxnx01.ch/s/324b4aLrSMyxGH9/download/engomo.war
+      run: |
+        DOWNLOAD_URL=$(cat DOWNLOAD_URL)
+        echo $DOWNLOAD_URL
+        wget $DOWNLOAD_URL
 
     - name: Build the Docker image
       env:
